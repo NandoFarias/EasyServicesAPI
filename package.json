@@ -1,0 +1,32 @@
+{
+  "name": "easyservicesapi",
+  "version": "1.0.0",
+  "description": "BackEnd for Easy Services application",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NandoFarias/EasyServicesAPI.git"
+  },
+  "keywords": [
+    "easy",
+    "services",
+    "api"
+  ],
+  "author": "nandofarias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NandoFarias/EasyServicesAPI/issues"
+  },
+  "homepage": "https://github.com/NandoFarias/EasyServicesAPI#readme",
+  "dependencies" : {
+      "express"    : "~4.7.2",
+      "mongoose"   : "~4.1.0",
+      "morgan"     : "~1.2.2",
+      "body-parser": "~1.5.2",
+      "jsonwebtoken": "^5.0.2",
+      "method-override": "~2.1.2"
+  }
+}

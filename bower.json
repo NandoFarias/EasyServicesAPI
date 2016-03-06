@@ -1,0 +1,32 @@
+{
+  "name": "easyservicesapi",
+  "description": "BackEnd for Easy Services application",
+  "main": "server.js",
+  "authors": [
+    "nandofarias"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "easy",
+    "services",
+    "api"
+  ],
+  "homepage": "https://github.com/NandoFarias/EasyServicesAPI",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.0",
+    "angularjs-geolocation": "^0.1.1",
+    "bootstrap": "^3.3.6",
+    "modernizr": "^3.3.1",
+    "holderjs": "^2.9.3"
+  }
+}

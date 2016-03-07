@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="easyServicesApp">
+<html class="no-js" ng-app="app">
     <head>
 	    <meta charset="utf-8">
 	    <title>Easy Services</title>
@@ -20,45 +20,53 @@
 	    <script src="../bower_components/angular-route/angular-route.js"></script>
 	    <script src="../bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
     </head>
-    <body>
+    <body ng-controller="engineerCtrl as vm">
     	<div class="container">
     	    <!-- HEADER -->
             <div class="header">
-            <h3 class="text-muted">Easy Services</h3>
+                <ul class="nav nav-pills pull-right">
+                    <li active><a href="">Cadastre-se</a></li>
+                    <li disabled><a href="">Procure</a></li>
+                </ul>
+                <h3 class="text-muted">Easy Services</h3>
             </div>
             
             <!-- CONTENT -->
             <div class="row content">
                 <div class="col-md-7">
-                    <div id="map"><img src="holder.js/645x645"></div>
+                    <div id="map" style="width:645px; height:645px"></div>
                 </div>
                 <div class="col-md-5">
                     <div class="panel panel-default">
 
                         <div class="panel-heading">
-                            <h2 class="panel-title text-center">Precisando de um serviço?<span class="glyphicon glyphicon-map-marker"></span></h2>
+                            <h2 class="panel-title text-center">Deseja oferecer um serviço? Cadastre-se!<span class="glyphicon glyphicon-map-marker"></span></h2>
                         </div>
 
                         <div class="panel-body">
-                            <form name="searchForm" novalidate>
+                            <form name="registerForm" novalidate>
                                 <div class="form-group">
-                                    <label for="skill">Qual serviço você precisa? <span class="badge">Todos os campos são obrigatórios!</span></label>
-                                    <input type="text" class="form-control" id="skill" placeholder="Digite a especialidade que deseja" ng-model="formData.skill" required>
+                                    <label for="username">Nome<span class="badge">Todos os campos são obrigatórios!</span></label>
+                                    <input type="text" class="form-control" id="username" placeholder="Digite a especialidade" ng-model="vm.engineer.username" required>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="skill">Habilidade</label>
+                                    <input type="text" class="form-control" id="skill" placeholder="Digite a especialidade" ng-model="vm.engineer.skill" required>
                                 </div>
                                 <div class="form-group">
 		                            <label for="latitude">Latitude</label>
-		                            <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
+		                            <input type="text" class="form-control" id="latitude" value="39.500" ng-model="vm.engineer.latitude" readonly>
 		                        </div>
 		                        <div class="form-group">
 		                            <label for="longitude">Longitude</label>
-		                            <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
+		                            <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="vm.engineer.longitude" readonly>
 		                        </div>
 		                        <div class="form-group">
 		                            <label for="verified">HTML5 Verificar Localidade? <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
-		                            <input type="text" class="form-control" id="verified" placeholder= "Nope" ng-model="formData.htmlverified" readonly>
+		                            <input type="text" class="form-control" id="verified" placeholder= "Nope" ng-model="vm.engineer.htmlverified" readonly>
 		                        </div>
 
-                                <button type="submit" class="btn btn-primary btn-block" ng-disabled="searchForm.$invalid">Pesquisar</button>
+                                <button type="submit" class="btn btn-primary btn-block" ng-click="vm.createUser()" ng-disabled="registerForm.$invalid">Cadastrar</button>
                             </form>
                         </div>
                     </div>
@@ -71,5 +79,10 @@
                 <p class="text-center"><span class="glyphicon glyphicon-check"></span>2016 - Easy Services</p>
             </div>
     	</div>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/engineer/engineer.module.js"></script>
+        <script type="text/javascript" src="js/engineer/engineer.controller.js"></script>
+        <script type="text/javascript" src="js/components/gmaps/gmaps.module.js"></script>
+        <script type="text/javascript" src="js/components/gmaps/gmaps.service.js"></script>
     </body>
 </html>

@@ -35,3 +35,8 @@ node_modules
 #bower
 
 bower_components
+
+#sublime
+
+easyservices.sublime-project
+easyservices.sublime-workspace

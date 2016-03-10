@@ -1,4 +1,6 @@
+'use strict';
 //Dependencies
+var express        = require('express')
 var mongoose       = require('mongoose');
 var config         = require('./config/environment')
 var app            = express();
@@ -21,4 +23,4 @@ require('./routes.js')(app);
 //Listen
 //---------------------------------
 app.listen(config.port);
-console.log('Server started using port: ' + port);
+console.log('Server started using port: ' + config.port);

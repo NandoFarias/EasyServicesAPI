@@ -46,7 +46,7 @@ angular.module('gmaps', [])
             else {
 
                 // Perform an AJAX call to get all of the records in the db.
-                $http.get('/engineers').success(function(response){
+                $http.get('/api/engineers').success(function(response){
 
                     // Then convert the results into map points
                     locations = convertToMapPoints(response);

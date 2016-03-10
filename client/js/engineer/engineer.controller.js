@@ -65,7 +65,7 @@
 
         	console.log(engineer);
 
-        	$http.post('/engineers', engineer)
+        	$http.post('/api/engineers', engineer)
         		.success(function(data) {
         			vm.engineer.username = ""
         			vm.engineer.skill = ""

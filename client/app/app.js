@@ -3,7 +3,6 @@
 
     angular
         .module('app', [
-            'app.engineer',
-            'geolocation'
+            'app.engineer'
         ]);
 })();

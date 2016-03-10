@@ -1,6 +1,12 @@
-// Creates the gservice factory. This will be the primary means by which we interact with Google Maps
-angular.module('gmaps', [])
-    .factory('gmapsService', function($rootScope, $http){
+(function() {
+    'use strict';
+    angular
+        .module('gmaps')
+        .factory('gmapsService', gmapsService);
+
+    gmapsService.$inject = ['$rootScope', 'engineerService'];
+
+    function gmapsService($rootScope, engineerService) {
 
         // Initialize Variables
         // -------------------------------------------------------------
@@ -45,15 +51,17 @@ angular.module('gmaps', [])
             // If no filter is provided in the refresh() call...
             else {
 
-                // Perform an AJAX call to get all of the records in the db.
-                $http.get('/api/engineers').success(function(response){
 
-                    // Then convert the results into map points
-                    locations = convertToMapPoints(response);
+                engineerService.getEngineers()
+                    .then(function(response) {
+                        // Then convert the results into map points
+                        locations = convertToMapPoints(response);
 
-                    // Then initialize the map -- noting that no filter was used.
-                    initialize(latitude, longitude, false);
-                }).error(function(){});
+                        // Then initialize the map -- noting that no filter was used.
+                        initialize(latitude, longitude, false);
+                    }, function(error) {
+                        console.log(error);
+                    });
             }
         };
 
@@ -114,6 +122,7 @@ angular.module('gmaps', [])
             }
 
             // If a filter was used set the icons yellow, otherwise blue
+            var icon = "";
             if(filter){
                 icon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
             }
@@ -182,4 +191,5 @@ angular.module('gmaps', [])
             googleMapService.refresh(selectedLat, selectedLong));
 
         return googleMapService;
-    });
+    }
+})();

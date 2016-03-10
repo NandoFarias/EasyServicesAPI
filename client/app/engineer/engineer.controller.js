@@ -3,15 +3,15 @@
 
     angular
         .module('app.engineer')
-        .controller('engineerCtrl', engineerCtrl);
+        .controller('engineerController', engineerController);
 
-    engineerCtrl.$inject = ['geolocation', '$http', 'gmapsService', '$rootScope', '$scope'];
+    engineerController.$inject = ['geolocation', '$http', 'gmapsService', '$rootScope', '$scope', 'engineerService'];
 
     /* @ngInject */
-    function engineerCtrl(geolocation, $http, gmapsService, $rootScope, $scope) {
+    function engineerController(geolocation, $http, gmapsService, $rootScope, $scope, engineerService) {
         var vm = this;
-        vm.title = 'engineerCtrl';
-        vm.createUser = createUser;
+        vm.title = 'engineerController';
+        vm.createEngineer = createEngineer;
         vm.getLocationHtml = getLocationHtml;
 
         activate();
@@ -55,26 +55,22 @@
         }
 
 
-        function createUser() {
+        function createEngineer() {
         	var engineer = {
         		username: vm.engineer.username,
         		skill: vm.engineer.skill,
         		location: [vm.engineer.longitude, vm.engineer.latitude],
         		htmlverified: vm.engineer.htmlverified
         	}
+            engineerService.createEngineer(engineer)
+                .then(function(data) {
+                    vm.engineer.username = ""
+                    vm.engineer.skill = ""
 
-        	console.log(engineer);
-
-        	$http.post('/api/engineers', engineer)
-        		.success(function(data) {
-        			vm.engineer.username = ""
-        			vm.engineer.skill = ""
-
-        			gmapsService.refresh(vm.engineer.latitude, vm.engineer.longitude);
-        		})
-        		.error(function(data) {
-        			console.log("Error: " + data)
-        		});
+                    gmapsService.refresh(vm.engineer.latitude, vm.engineer.longitude);
+                },function(data) {
+                    console.log('excluir este log');
+                })
         }
     }
 })();

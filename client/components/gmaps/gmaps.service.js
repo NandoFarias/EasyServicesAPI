@@ -4,9 +4,9 @@
         .module('gmaps')
         .factory('gmapsService', gmapsService);
 
-    gmapsService.$inject = ['$rootScope', 'engineerService'];
+    gmapsService.$inject = ['$rootScope', 'engineerService', 'positionDefault'];
 
-    function gmapsService($rootScope, engineerService) {
+    function gmapsService($rootScope, engineerService, positionDefault) {
 
         // Initialize Variables
         // -------------------------------------------------------------
@@ -23,8 +23,8 @@
         var currentSelectedMarker;
 
         // User Selected Location (initialize to center of America)
-        var selectedLat = 39.50;
-        var selectedLong = -98.35;
+        var selectedLat = positionDefault.latitude;
+        var selectedLong = positionDefault.longitude;
 
         // Functions
         // --------------------------------------------------------------
@@ -110,13 +110,11 @@
 
             // Uses the selected lat, long as starting point
             var myLatLng = {lat: selectedLat, lng: selectedLong};
-
             // If map has not been created...
             if (!map){
-
                 // Create a new map and place in the index.html page
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 3,
+                    zoom: 15,
                     center: myLatLng
                 });
             }

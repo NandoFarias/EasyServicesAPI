@@ -1,0 +1,35 @@
+<div class="col-md-5">
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">Deseja oferecer um serviço? Cadastre-se!<span class="glyphicon glyphicon-map-marker"></span></h2>
+        </div>
+
+        <div class="panel-body">
+            <form name="registerForm" novalidate>
+                <div class="form-group">
+                    <label for="username">Nome<span class="badge">Todos os campos são obrigatórios!</span></label>
+                    <input type="text" class="form-control" id="username" placeholder="Digite a especialidade" ng-model="vm.engineer.username" required>
+                </div>
+                 <div class="form-group">
+                    <label for="skill">Habilidade</label>
+                    <input type="text" class="form-control" id="skill" placeholder="Digite a especialidade" ng-model="vm.engineer.skill" required>
+                </div>
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude" value="39.500" ng-model="vm.engineer.latitude" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="vm.engineer.longitude" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="verified">HTML5 Verificar Localidade? <span><button class="btn btn-default btn-xs" ng-click="vm.getLocationHtml()"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
+                    <input type="text" class="form-control" id="verified" placeholder= "Nope" ng-model="vm.engineer.htmlverified" readonly>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" ng-click="vm.createEngineer()" ng-disabled="registerForm.$invalid">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>

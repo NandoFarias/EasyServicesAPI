@@ -3,7 +3,8 @@
 
     angular
         .module('app', [
-            'app.engineer'
+            'app.engineer',
+            'ui.router'
         ])
         .constant("positionDefault", {
         "latitude": -23.605524,

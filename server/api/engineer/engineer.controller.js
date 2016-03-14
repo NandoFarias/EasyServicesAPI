@@ -33,8 +33,30 @@ function create(req, res) {
     .catch(handleError(res));
 }
 
+function search(req, res) {
+    var lat      = req.body.latitude;
+    var long     = req.body.longitude;
+    var distance = req.body.distance;
+
+    var query = Engineer.find({});
+
+    if(distance){
+
+        // Using MongoDB's geospatial querying features. (Note how coordinates are set [long, lat]
+        query = query.where('location').near({ center: {type: 'Point', coordinates: [long, lat]},
+
+            // Converting meters to miles. Specifying spherical geometry (for globe)
+            maxDistance: distance, spherical: true});
+    }
+
+    query.execAsync()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 
 module.exports = {
     index: index,
-    create: create
+    create: create,
+    search: search
 }

@@ -17,7 +17,7 @@
                 config: {
                     url: '/engineer/signup',
                     templateUrl: 'app/engineer/views/signup.view.html',
-                    controller: 'engineerController',
+                    controller: 'engineerSignupController',
                     controllerAs: 'vm'
                 }
             },
@@ -26,7 +26,7 @@
                 config:{
                     url: '/engineer/search',
                     templateUrl: 'app/engineer/views/search.view.html',
-                    controller: 'engineerController',
+                    controller: 'engineerSearchController',
                     controllerAs: 'vm'
                 }
             }

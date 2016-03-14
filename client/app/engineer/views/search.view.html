@@ -15,31 +15,29 @@
                 <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
                 <div class="form-group">
                     <label for="latitude">Latitude</label>
-                    <input type="text" class="form-control" id="latitude" value="39.500" ng-model="vm.engineer.latitude" readonly>
+                    <input type="text" class="form-control" id="latitude" value="39.500" ng-model="vm.client.latitude" readonly>
                 </div>
                 <div class="form-group">
                     <label for="longitude">Longitude</label>
-                    <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="vm.engineer.longitude" readonly>
+                    <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="vm.client.longitude" readonly>
                 </div>
                 <div class="form-group">
                     <label for="distance">Distancia</label>
-                    <input type="text" class="form-control" id="distance" placeholder="500" ng-model="vm.distance">
+                    <input type="text" class="form-control" id="distance" placeholder="500" ng-model="vm.client.distance">
                 </div>
 
                 <div class="form-group">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="verified" id="verified" value="True" ng-model="vm.engineer.htmlverified"> <strong>Include Only HTML5 Verified Locations?</strong>
+                            <input type="checkbox" name="verified" id="verified" value="True" ng-model="vm.htmlverified"> <strong>Include Only HTML5 Verified Locations?</strong>
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-danger btn-block" ng-click="vm.getEngineers()">Procurar</button>
+                <button type="submit" class="btn btn-danger btn-block" ng-click="vm.searchEngineers()">Procurar</button>
             </form>
         </div>
 
-        <div ng-show="queryCount > 0" class="panel-footer">
-            <p class="text-center">Hot Dang! We Found {queryCount}} Teammates.</p>
-        </div>
+
     </div>
 </div>

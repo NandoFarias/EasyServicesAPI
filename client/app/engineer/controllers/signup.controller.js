@@ -3,7 +3,7 @@
 
     angular
         .module('app.engineer')
-        .controller('engineerController', engineerController);
+        .controller('engineerSignupController', engineerController);
 
     engineerController.$inject = ['geolocation', '$http', 'gmapsService', '$rootScope', '$scope', 'engineerService', '$log', 'positionDefault'];
 
@@ -22,7 +22,7 @@
         	vm.engineer = {};
         	vm.engineer.latitude = positionDefault.latitude;
         	vm.engineer.longitude = positionDefault.longitude;
-             
+
             $rootScope.$on("clicked", function(){
 
                 // Run the gservice functions associated with identifying coordinates
@@ -76,8 +76,9 @@
 
                     gmapsService.refresh(vm.engineer.latitude, vm.engineer.longitude);
                 },function(data) {
-                    $log.error('Não foi possivel determinar a localização via htmlverified', data)
-                })
+                    $log.error('Não foi possivel determinar a localização via htmlverified', data);
+                });
         }
+
     }
 })();

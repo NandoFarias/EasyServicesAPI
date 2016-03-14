@@ -8,7 +8,8 @@
     function engineerService($http, $q, $log) {
         var service = {
             getEngineers: getEngineers,
-            createEngineer: createEngineer
+            createEngineer: createEngineer,
+            searchEngineers: searchEngineers
         };
         return service;
         ////////////////
@@ -32,7 +33,21 @@
                 .error(function(msg, code) {
                     deferred.reject(msg);
                     $log.error(msg, code);
-                });1
+                });
+
+            return deferred.promise;
+        }
+
+        function searchEngineers(search) {
+            var deferred = $q.defer();
+            $http.post('/api/engineers/search/', search)
+                .success(function(data) {
+                    deferred.resolve(data);
+                })
+                .error(function(msg, code) {
+                    deferred.reject(msg);
+                    $log.error(msg, code);
+                });
 
             return deferred.promise;
         }

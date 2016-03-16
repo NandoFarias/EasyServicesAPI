@@ -24,12 +24,19 @@
   "dependencies": {
     "bluebird": "^3.3.4",
     "body-parser": "~1.5.2",
+    "composable-middleware": "^0.3.0",
     "ejs": "^2.4.1",
     "express": "~4.7.2",
-    "jsonwebtoken": "^5.0.2",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.7.0",
     "lodash": "^4.6.1",
     "method-override": "~2.1.2",
     "mongoose": "~4.1.0",
-    "morgan": "~1.2.2"
+    "morgan": "~1.2.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4"
   }
 }

@@ -5,7 +5,8 @@ var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var path           = require('path');
-var config         = require('./environment')
+var config         = require('./environment');
+var passport       = require('passport');
 
 
 
@@ -20,6 +21,7 @@ module.exports = function(app) {
     app.use(bodyParser.text());
     app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
     app.use(methodOverride());
+    app.use(passport.initialize());
 
 
     if('development' === env) {

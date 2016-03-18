@@ -2,7 +2,7 @@
 
 var express = require('express');
 var passport = require('passport');
-var setTokenCookie = require('../auth.service');
+var authService = require('../auth.service');
 
 var router = express.Router();
 
@@ -15,6 +15,6 @@ router
     .get('/callback', passport.authenticate('facebook',{
         failureRedirect: '/signup',
         session: false
-    }), setTokenCookie);
+    }), authService.setTokenCookie);
 
 module.exports = router;

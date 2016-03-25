@@ -24,15 +24,19 @@ function isAuthenticated() {
     })
     // Attach user to request
     .use(function(req, res, next) {
+
       User.findByIdAsync(req.user._id)
-        .then(user => {
-          if (!user) {
-            return res.status(401).end();
-          }
-          req.user = user;
-          next();
+        .then(function(user) {
+            if (!user) {
+                return res.status(401).end();
+            }
+            req.user = user;
+            next();
         })
-        .catch(err => next(err));
+        .catch(function(err) {
+            next(err);
+        });
+
     });
 }
 
@@ -58,6 +62,17 @@ function signToken(id, role) {
     expiresIn: 60 * 60 * 5
   });
 }
+
+function setTokenCookie(req, res) {
+    if(!req.user){
+        return res.status(404).send("Me parece que você não está logado, por favor tente novamente");
+    }
+
+    var token = signToken(req.user._id, req.user.role);
+    res.cookie('token', token);
+    res.redirect('/');
+}
+
 
 module.exports = {
     isAuthenticated: isAuthenticated,

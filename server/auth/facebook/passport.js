@@ -42,3 +42,7 @@ function setup(User, config) {
           });
     }));
 }
+
+module.exports = {
+    setup: setup
+}

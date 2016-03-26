@@ -48,7 +48,7 @@ UserSchema
 UserSchema
   .path('email')
   .validate(function(email) {
-    if (authTypes.indexOf(this.provider) !== -1) {
+    if (AUTH_TYPES.indexOf(this.provider) !== -1) {
       return true;
     }
     return email.length;
@@ -57,7 +57,7 @@ UserSchema
 UserSchema
   .path('password')
   .validate(function(password) {
-    if (authTypes.indexOf(this.provider) !== -1) {
+    if (AUTH_TYPES.indexOf(this.provider) !== -1) {
       return true;
     }
     return password.length;
@@ -89,45 +89,43 @@ var validatePresenceOf = function(value) {
 UserSchema
   .pre('save', function(next) {
     // Handle new/update passwords
-    now = new Date();
+    var self = this;
+
+    var now = new Date();
     this.updated_at = now;
     if(!this.created_at){
         this.created_at = now;
     }
+
     if (!this.isModified('password')) {
       return next();
     }
 
-    if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1) {
+    if (!validatePresenceOf(this.password) && AUTH_TYPES.indexOf(this.provider) === -1) {
       next(new Error('Invalid password'));
     }
 
     // Make salt with a callback
     this.makeSalt(function(saltErr, salt){
+
       if (saltErr) {
         next(saltErr);
       }
-      this.salt = salt;
-      this.encryptPassword(this.password, function(encryptErr, hashedPassword){
+      self.salt = salt;
+      self.encryptPassword(self.password, function(encryptErr, hashedPassword){
         if (encryptErr) {
           next(encryptErr);
         }
-        this.password = hashedPassword;
+        self.password = hashedPassword;
         next();
       });
     });
   });
 
 UserSchema.methods = {
-  /**
-   * Authenticate - check if the passwords are the same
-   *
-   * @param {String} password
-   * @param {Function} callback
-   * @return {Boolean}
-   * @api public
-   */
+
   authenticate: function(password, callback) {
+    var self = this;
     if (!callback) {
       return this.password === this.encryptPassword(password);
     }
@@ -137,7 +135,7 @@ UserSchema.methods = {
         return callback(err);
       }
 
-      if (this.password === pwdGen) {
+      if (self.password === pwdGen) {
         callback(null, true);
       } else {
         callback(null, false);
@@ -145,14 +143,7 @@ UserSchema.methods = {
     });
   },
 
-  /**
-   * Make salt
-   *
-   * @param {Number} byteSize Optional salt byte size, default to 16
-   * @param {Function} callback
-   * @return {String}
-   * @api public
-   */
+
   makeSalt: function(byteSize, callback) {
     var defaultByteSize = 16;
 
@@ -180,14 +171,7 @@ UserSchema.methods = {
     });
   },
 
-  /**
-   * Encrypt password
-   *
-   * @param {String} password
-   * @param {Function} callback
-   * @return {String}
-   * @api public
-   */
+
   encryptPassword: function(password, callback) {
     if (!password || !this.salt) {
       return null;

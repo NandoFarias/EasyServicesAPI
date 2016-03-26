@@ -5,6 +5,7 @@ var path = require('path');
 
 module.exports = function(app) {
       app.use('/api/engineers', require('./api/engineer'));
+      app.use('/api/users', require('./api/user'));
 
       app.use('/auth', require('./auth'));
 

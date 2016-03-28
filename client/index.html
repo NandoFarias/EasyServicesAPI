@@ -11,9 +11,8 @@
 	    <!-- Google Maps API -->
 	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhbMOIjUo6kBnJ6iBfSySdtBwi3R61ruI"></script>
 	    <!-- JS Source -->
-	    <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-	    <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+
+
     </head>
     <body>
     	<div class="container">
@@ -42,6 +41,14 @@
     	</div>
 
 
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/lodash/dist/lodash.js"></script>
+
+        <script type="text/javascript" src="app/app.constant.js"></script>
         <script type="text/javascript" src="app/app.module.js"></script>
         <script type="text/javascript" src="app/app.routes.js"></script>
         <script type="text/javascript" src="components/gmaps/gmaps.module.js"></script>
@@ -51,6 +58,13 @@
         <script type="text/javascript" src="app/engineer/controllers/signup.controller.js"></script>
         <script type="text/javascript" src="app/engineer/controllers/search.controller.js"></script>
         <script type="text/javascript" src="app/engineer/services/engineer.service.js"></script>
+        <script type="text/javascript" src="components/util/util.module.js"></script>
+        <script type="text/javascript" src="components/util/util.service.js"></script>
+        <script type="text/javascript" src="components/auth/auth.module.js"></script>
+        <script type="text/javascript" src="components/auth/auth.user.service.js"></script>
+        <script type="text/javascript" src="components/auth/auth.service.js"></script>
+        <script type="text/javascript" src="components/auth/auth.interceptor.service.js"></script>
+        <script type="text/javascript" src="components/auth/auth.router.decorator.js"></script>
 
     </body>
 </html>

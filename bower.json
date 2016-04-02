@@ -25,6 +25,9 @@
   "dependencies": {
     "angularjs-geolocation": "^0.1.1",
     "bootstrap": "^3.3.6",
-    "angular-ui-router": "^0.2.18"
+    "angular-ui-router": "^0.2.18",
+    "angular-cookies": "^1.5.3",
+    "angular-resource": "^1.5.3",
+    "lodash": "^4.6.1"
   }
 }

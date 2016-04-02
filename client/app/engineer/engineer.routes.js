@@ -18,7 +18,8 @@
                     url: '/engineer/signup',
                     templateUrl: 'app/engineer/views/signup.view.html',
                     controller: 'engineerSignupController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    authenticate: 'admin'
                 }
             },
             {

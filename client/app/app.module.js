@@ -4,10 +4,8 @@
     angular
         .module('app', [
             'app.engineer',
-            'ui.router'
-        ])
-        .constant("positionDefault", {
-        "latitude": -23.605524,
-        "longitude": -46.645287
-    });
+            'ui.router',
+            'app.constants',
+            'app.auth'
+        ]);
 })();

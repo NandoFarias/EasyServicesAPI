@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function appRun(routerHelper) {
-        routerHelper.configureStates(getStates(), '/engineer/signup');
+        routerHelper.configureStates(getStates());
     }
 
     function getStates() {

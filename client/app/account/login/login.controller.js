@@ -10,13 +10,35 @@
     /* @ngInject */
     function loginController(Auth, $state) {
         var vm = this;
-        vm.title = 'loginController';
+
 
         activate();
 
         ////////////////
 
         function activate() {
+            vm.user = {};
+            vm.errors = {};
+            vm.submitted = false;
+
+            vm.login = login;
+        }
+
+        function login(form) {
+            vm.submitted = true;
+
+            if(form.$valid){
+                vm.Auth.login({
+                    email: vm.user.email,
+                    password: vm.user.password
+                })
+                .then(function() {
+                    $state.go('main');
+                })
+                .catch(function(err) {
+                    vm.errors.other = err.message;
+                });
+            }
         }
     }
 })();

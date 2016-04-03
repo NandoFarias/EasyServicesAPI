@@ -6,6 +6,8 @@
             'app.engineer',
             'ui.router',
             'app.constants',
-            'app.auth'
+            'app.auth',
+            'app.account',
+            'app.main'
         ]);
 })();

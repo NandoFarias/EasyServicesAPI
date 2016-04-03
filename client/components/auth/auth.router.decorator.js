@@ -17,7 +17,7 @@
 
                   event.preventDefault();
                   return Auth.isLoggedIn(_.noop).then(function(is) {
-                    $state.go(is ? 'main' : 'search');
+                    $state.go(is ? 'main' : 'searchEngineer');
                   });
                 });
               } else {

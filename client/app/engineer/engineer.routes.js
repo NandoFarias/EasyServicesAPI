@@ -13,17 +13,15 @@
     function getStates() {
         return [
             {
-                state: 'signup',
+                state: 'registerEngineer',
                 config: {
                     url: '/engineer/signup',
                     templateUrl: 'app/engineer/views/signup.view.html',
                     controller: 'engineerSignupController',
-                    controllerAs: 'vm',
-                    authenticate: 'admin'
-                }
+                    controllerAs: 'vm'                }
             },
             {
-                state: 'search',
+                state: 'searchEngineer',
                 config:{
                     url: '/engineer/search',
                     templateUrl: 'app/engineer/views/search.view.html',

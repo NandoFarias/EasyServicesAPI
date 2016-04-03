@@ -9,9 +9,10 @@
     function appRun(routerHelper, $rootScope) {
         routerHelper.configureStates(getStates());
         $rootScope.$on('$stateChangeStart', function(event, next, nextParams, current) {
-          if (next.name === 'logout' && current && current.name && !current.authenticate) {
-            next.referrer = current.name;
-        }
+            if (next.name === 'logout' && current && current.name && !current.authenticate) {
+                next.referrer = current.name;
+            }
+        });
     }
 
     function getStates() {

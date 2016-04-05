@@ -55,7 +55,7 @@
                 config:{
                     url: '/account/settings',
                     templateUrl: 'app/account/settings/settings.html',
-                    controller: 'engineerSearchController',
+                    controller: 'settingsController',
                     controllerAs: 'vm',
                     authenticate: true
                 }

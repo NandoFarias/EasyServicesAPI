@@ -33,7 +33,7 @@
                     password: vm.user.password
                 })
                 .then(function() {
-                    $state.go('main');
+                    $state.go('settings');
                 })
                 .catch(function(err) {
                     vm.errors.other = err.message;

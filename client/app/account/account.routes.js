@@ -21,7 +21,7 @@
                 state: 'login',
                 config: {
                     url: '/account/login',
-                    templateUrl: 'app/account/login/login.view.html',
+                    templateUrl: 'app/account/login/login.html',
                     controller: 'loginController',
                     controllerAs: 'vm'
                 }
@@ -45,7 +45,7 @@
                 state: 'signup',
                 config: {
                     url: '/account/signup',
-                    templateUrl: 'app/account/signup/signup.view.html',
+                    templateUrl: 'app/account/signup/signup.html',
                     controller: 'signupController',
                     controllerAs: 'vm'
                 }
@@ -54,7 +54,7 @@
                 state: 'settings',
                 config:{
                     url: '/account/settings',
-                    templateUrl: 'app/account/settings/settings.view.html',
+                    templateUrl: 'app/account/settings/settings.html',
                     controller: 'engineerSearchController',
                     controllerAs: 'vm',
                     authenticate: true

@@ -39,7 +39,7 @@
                     err = err.data;
                     angular.forEach(err.errors, function (error, field) {
                         form[field].$setValidity('mongoose', false);
-                        this.errors[field] = error.message;    
+                        vm.errors[field] = error.message;
                     });
                 });
             }

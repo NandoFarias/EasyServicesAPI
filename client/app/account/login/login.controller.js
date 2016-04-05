@@ -28,7 +28,7 @@
             vm.submitted = true;
 
             if(form.$valid){
-                vm.Auth.login({
+                Auth.login({
                     email: vm.user.email,
                     password: vm.user.password
                 })

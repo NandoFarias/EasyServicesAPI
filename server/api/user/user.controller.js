@@ -54,7 +54,7 @@ function create(req, res, next) {
 function show(req, res, next) {
   var userId = req.params.id;
 
-  User.findByIdAsync(userId)
+  User.findById(userId)
     .then(function(user){
       if (!user) {
         return res.status(404).end();

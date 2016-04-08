@@ -3,7 +3,7 @@
 
     angular
         .module('app.account', [
-            
+            'app.oauthButtons'
         ]);
 })();
 
